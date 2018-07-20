@@ -1,0 +1,204 @@
+body {
+    background:url('bg.jpg') no-repeat fixed center bottom #000; width:100%;
+}
+
+/* (footer) */
+* { margin: 0; padding: 0; }
+
+html, body { min-height: 100%; }
+
+body { min-height: 100%; /*height:auto !important;*/ /*height:100%;*/ position: absolute; padding-bottom: 0; }
+
+#wrapper { min-height: 100%; }
+
+#fox { position: absolute; top: 20px; height: 135px; }
+
+/* Opera Fix */
+body:before { content: ""; height: 100%; float: left; width: 0; margin-top: -32767px; }
+
+/* (footer) */
+
+.record_type {
+    width: 65px;
+    margin: 0 1px;
+    float: left;
+    position: relative;
+    cursor: pointer;
+}
+
+.record_type span {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 0 none;
+    border-radius: 0;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    height: 20px;
+    padding: 10px 5px;
+    width: 70px;
+    display: block;
+}
+
+.record_type .dropdown {
+    border: 0 none;
+    border-radius: 3px 3px 3px 3px;
+    padding: 0px 5px;
+    list-style: none;
+    margin: 0;
+    width: 70px;
+    top: 45px;
+    left: -2px;
+    position: absolute;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .8) inset;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.8);
+}
+
+.record_type .dropdown li {
+    background: none repeat scroll 0 0 #EEEEEE;
+    border: 0 none;
+    border-radius: 3px 3px 3px 3px;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    height: 20px;
+    padding: 10px 5px;
+    list-style: none;
+    margin: 5px 0;
+}
+
+.dig-output {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.2);
+    font: bold 11px/14px 'Georgia';
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.4);
+    color: #dd5;
+    width: 500px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 1px #000000;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    zoom: 1;
+}
+
+/* Form wrapper styling */
+.form-wrapper {
+    width: 550px;
+    padding: 15px;
+    margin: 20px auto;
+    background: #444;
+    background: rgba(0, 0, 0, .2);
+    border-radius: 10px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .4) inset, 0 1px 0 rgba(255, 255, 255, .2);
+    position: relative;
+}
+
+/* Form text input */
+
+.form-wrapper input {
+    /*width: 170px;*/
+    width: 208px;
+    height: 20px;
+    padding: 10px 5px;
+    float: left;
+    font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    border: 0;
+    background: #eee;
+    border-radius: 3px 0 0 3px;
+    margin: 0 1px 0;
+}
+
+.form-wrapper .server_input {
+    border-radius: 0;
+}
+
+.form-wrapper input:focus {
+    outline: 0;
+    background: #fff;
+    box-shadow: 0 0 2px rgba(0, 0, 0, .8) inset;
+}
+
+.form-wrapper input::-webkit-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-moz-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.form-wrapper input:-ms-input-placeholder {
+    color: #999;
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* Form submit button */
+.form-wrapper button {
+    overflow: visible;
+    position: relative;
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 110px;
+    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+    color: #fff;
+    text-transform: uppercase;
+    background: #d83c3c;
+    border-radius: 0 3px 3px 0;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .3);
+}
+
+.form-wrapper button:hover {
+    background: #e54040;
+}
+
+.form-wrapper button:active,
+.form-wrapper button:focus {
+    background: #c42f2f;
+    outline: 0;
+}
+
+.form-wrapper button:before { /* left arrow */
+    content: '';
+    position: absolute;
+    border-width: 8px 8px 8px 0;
+    border-style: solid solid solid none;
+    border-color: transparent #d83c3c transparent;
+    top: 12px;
+    left: -6px;
+}
+
+.form-wrapper button:hover:before {
+    border-right-color: #e54040;
+}
+
+.form-wrapper button:focus:before,
+.form-wrapper button:active:before {
+    border-right-color: #c42f2f;
+}
+
+.form-wrapper button::-moz-focus-inner { /* remove extra button spacing for Mozilla Firefox */
+    border: 0;
+    padding: 0;
+}
+
+hr {
+    margin: 20px 0;
+    border: 1px solid #444;
+}
+
+h2 {
+    padding-bottom: 10px;
+}
