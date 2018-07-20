@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 let settings = {
-  port: 8065,
+  port: 8060,
 };
 
 if (fs.existsSync(__dirname + '/settings.local.js')) {
