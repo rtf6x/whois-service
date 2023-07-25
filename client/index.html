@@ -23,8 +23,6 @@
     form.onsubmit = function() {
         const domain = document.getElementsByClassName('domain_input')[0].value;
         const server = document.getElementsByClassName('server_input')[0].value;
-        console.log(domain);
-        console.log(server);
         WhoisService(domain, server);
         return false;
     }
