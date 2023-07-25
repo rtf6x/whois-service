@@ -13,9 +13,9 @@ window.WhoisService = function (domain, server) {
       whoisContainer.insertAdjacentHTML('afterbegin', output)
     }
   };
-  xhr.send({
+  xhr.send(JSON.stringify({
     domain: domain,
     server: server,
     recordType: 'ANY'
-  });
+  }));
 };
