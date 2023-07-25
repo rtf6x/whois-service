@@ -1,13 +1,21 @@
-window.WhoisService = function (domain, server, recordType) {
-  jQuery.ajax({
-    type: 'POST',
-    url: '/api',
-    data: {domain: domain, server: server, recordType: recordType || 'ANY'},
-    success: function (data) {
+window.WhoisService = function (domain, server) {
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api', true);
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  xhr.timeout = 20000;
+  xhr.onreadystatechange = () => {
+    if (xhr.readyState === 4) {
       var output = '<div id="wrapper"><div class="dig-output">';
-      output += data;
+      output += xhr.response;
       output += '</div></div>';
-      jQuery('.whois').empty().append(output);
+      const whoisContainer = document.getElementsByClassName('whois')[0];
+      whoisContainer.innerHTML = '';
+      whoisContainer.insertAdjacentHTML('afterbegin', output)
     }
+  };
+  xhr.send({
+    domain: domain,
+    server: server,
+    recordType: 'ANY'
   });
 };

@@ -1,61 +1,34 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" lang="ru" xml:lang="ru">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8"/>
     <title>DIG Whois</title>
-    <link rel="shortcut icon" type="image/x-icon" href="http://www.strangefoxes.ru/whois/Zerg_Icon_render.ico">
-    <link href="http://www.strangefoxes.ru/whois/Zerg_Icon_render.ico" rel="shortcut icon">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="idn.js"></script>
-    <script type="text/javascript">
-        jQuery = jQuery.noConflict();
-        jQuery(function () {
-            function formSubmit() {
-                WhoisService(jQuery('.domain_input').val(), jQuery('.server_input').val(), jQuery('.record_type_input').val());
-                return false;
-            }
-
-            jQuery('.record_type .dropdown').hide();
-            jQuery('.record_type .dropdown li').click(function () {
-                jQuery('.record_type_input').val(jQuery(this).attr('name'));
-                jQuery('.record_type span').text(jQuery(this).text());
-                jQuery('.record_type .dropdown li').removeClass('active');
-                jQuery(this).addClass('active');
-                jQuery('.record_type .dropdown').slideToggle(300);
-            });
-            jQuery('.record_type span').click(function () {
-                jQuery('.record_type .dropdown').slideToggle(300);
-            });
-            jQuery('.form-wrapper').submit(formSubmit);
-            jQuery('.submit').click(formSubmit);
-        });
-    </script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<form class="form-wrapper cf" method="post">
-    <input type="text" name="domain" class="domain_input" placeholder="Домен" required/>
-    <input type="text" name="server" class="server_input" placeholder="Сервер"/>
-    <!--<input type="hidden" name="record_type" class="record_type_input">-->
-
-    <!--<div class="record_type">-->
-    <!--<span>Тип</span>-->
-    <!--<ul class="dropdown">-->
-    <!--<li name="ANY">Все</li>-->
-    <!--<li name="A">A</li>-->
-    <!--<li name="MX">MX</li>-->
-    <!--<li name="SIG">SIG</li>-->
-    <!--</ul>-->
-    <!--</div>-->
-
+<form class="form-wrapper cf" id="form" method="post">
+    <input type="text" name="domain" class="domain_input" placeholder="Domain" required/>
+    <input type="text" name="server" class="server_input" placeholder="Server"/>
     <button type="submit">DIG</button>
 </form>
 
 <div class="whois"></div>
 <div style="padding:20px;"></div>
+
+<script type="text/javascript">
+    const form = document.getElementById("form");
+    form.onsubmit = function() {
+        const domain = document.getElementsByClassName('domain_input')[0].value;
+        const server = document.getElementsByClassName('server_input')[0].value;
+        console.log(domain);
+        console.log(server);
+        WhoisService(domain, server);
+        return false;
+    }
+</script>
 
 </body>
 

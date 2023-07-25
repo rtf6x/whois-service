@@ -4,7 +4,10 @@ const domain = require('domain-info');
 const dns = require('dns');
 const punycode = require('punycode');
 const bodyParser = require('body-parser');
+
 const settings = require('./settings');
+
+const specialChars = require('./helpers/specialChars');
 
 const app = express();
 const server = http.createServer(app);
@@ -14,11 +17,9 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(require('morgan')('combined'));
 
-// special api route
 app.post('/api', function (req, res) {
   req.body.domain = specialChars(req.body.domain);
   req.body.server = specialChars(req.body.server);
-  // req.body.recordType = specialChars(req.body.recordType);
   req.body.domain = punycode.toASCII(req.body.domain);
 
   var output = '<h2>DNS Records:</h2>';
@@ -71,10 +72,3 @@ app.use(express.static(__dirname + '/client'));
 server.listen(settings.port, 'localhost', function () {
   console.log('listening on localhost:' + settings.port);
 });
-
-
-function specialChars(text) {
-  return text.replace(/\0/g, '0').replace(/\\(.)/g, '$1').replace(/&/g, '')
-    .replace(/</g, '').replace(/>/g, '').replace(/\\/g, '').replace(/\|/g, '').replace(/\//g, '')
-    .replace(/"/g, '').replace(/'/g, '');
-}
